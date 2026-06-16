@@ -26,7 +26,12 @@ io.on('connection', (socket) => {
 
   socket.on('create_room', (username) => {
     const roomCode = generateRoomCode();
-    rooms[roomCode] = { users: [{ id: socket.id, username }] };
+    rooms[roomCode] = {
+      users: [{ id: socket.id, username }],
+      videoId: 'dQw4w9WgXcQ',
+      currentTime: 0,
+      isPlaying: false
+    };
     socket.join(roomCode);
     socket.emit('room_created', { roomCode, users: rooms[roomCode].users });
   });
@@ -40,6 +45,39 @@ io.on('connection', (socket) => {
     room.users.push({ id: socket.id, username });
     socket.join(roomCode);
     io.to(roomCode).emit('room_update', room.users);
+
+    // Send current room state to the new joiner
+    socket.emit('room_state', {
+      videoId: room.videoId,
+      currentTime: room.currentTime,
+      isPlaying: room.isPlaying
+    });
+  });
+
+  socket.on('video_action', ({ roomCode, action, currentTime }) => {
+    const room = rooms[roomCode];
+    if (room) {
+      room.currentTime = currentTime;
+      room.isPlaying = action === 'play';
+    }
+    socket.to(roomCode).emit('video_action', { action, currentTime });
+  });
+
+  socket.on('load_video', ({ roomCode, videoId }) => {
+    const room = rooms[roomCode];
+    if (room) {
+      room.videoId = videoId;
+      room.currentTime = 0;
+      room.isPlaying = false;
+    }
+    socket.to(roomCode).emit('load_video', { videoId });
+  });
+
+  socket.on('sync_time', ({ roomCode, currentTime }) => {
+    const room = rooms[roomCode];
+    if (room) {
+      room.currentTime = currentTime;
+    }
   });
 
   socket.on('disconnect', () => {
