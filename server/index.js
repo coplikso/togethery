@@ -30,7 +30,9 @@ io.on('connection', (socket) => {
       users: [{ id: socket.id, username }],
       videoId: 'dQw4w9WgXcQ',
       currentTime: 0,
-      isPlaying: false
+      isPlaying: false,
+      pdfData: null,
+      currentPage: 1,
     };
     socket.join(roomCode);
     socket.emit('room_created', { roomCode, users: rooms[roomCode].users });
@@ -46,7 +48,6 @@ io.on('connection', (socket) => {
     socket.join(roomCode);
     io.to(roomCode).emit('room_update', room.users);
 
-    // Send current room state to the new joiner
     socket.emit('room_state', {
       videoId: room.videoId,
       currentTime: room.currentTime,
@@ -73,11 +74,32 @@ io.on('connection', (socket) => {
     socket.to(roomCode).emit('load_video', { videoId });
   });
 
+  socket.on('load_pdf', ({ roomCode, pdfData }) => {
+    const room = rooms[roomCode];
+    if (room) {
+      room.pdfData = pdfData;
+      room.currentPage = 1;
+    }
+    socket.to(roomCode).emit('load_pdf', { pdfData });
+  });
+
+  socket.on('sync_page', ({ roomCode, page }) => {
+    const room = rooms[roomCode];
+    if (room) {
+      room.currentPage = page;
+    }
+    socket.to(roomCode).emit('sync_page', { page });
+  });
+
   socket.on('sync_time', ({ roomCode, currentTime }) => {
     const room = rooms[roomCode];
     if (room) {
       room.currentTime = currentTime;
     }
+  });
+
+  socket.on('chat_message', ({ roomCode, username, text, timestamp }) => {
+    socket.to(roomCode).emit('chat_message', { username, text, timestamp });
   });
 
   socket.on('disconnect', () => {
