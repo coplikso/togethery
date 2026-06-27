@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://togetherly.vercel.app",
+    origin: ["https://togetherly.vercel.app", "https://togethery-r3peskrud-helpi2.vercel.app"]
     methods: ["GET", "POST"]
   }
 });
