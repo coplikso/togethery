@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
     const roomCode = generateRoomCode();
     rooms[roomCode] = {
       users: [{ id: socket.id, username }],
-      videoId: 'dQw4w9WgXcQ',
+      videoId: '',
       currentTime: 0,
       isPlaying: false,
       pdfData: null,
