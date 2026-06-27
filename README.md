@@ -13,7 +13,8 @@ the web is on **live demo** now : [togethery.vercel.app](https://togethery.verce
 - **Live chat**, chit chator maybe even discuss about the video or the pdf with your partners, (pls don't do gosip, its not cool)
  ---
 
-
+## AI usage
+i used claude to make the phase breakdown of the web, and for debuging
 
  ## tech stack
 
