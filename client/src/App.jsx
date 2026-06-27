@@ -291,8 +291,8 @@ const styles = {
   chatTimestamp: { fontSize: '0.7rem', color: '#3A3A45', marginLeft: '0.3rem' },
   chatInputRow: {
     display: 'flex',
-    gap: '0.5rem',
-    padding: '0.05rem',
+    gap: '0.6rem',
+    padding: '0.5rem',
     borderTop: '1px solid #474E93',
   },
   chatInput: {
@@ -306,9 +306,9 @@ const styles = {
     outline: 'none',
   },
   chatSendBtn: {
-    backgroundColor: '#7C6FFF',
+    backgroundColor: '#0E0E10',
+    border: '1px solid #474E93',
     color: '#fff',
-    border: 'none',
     borderRadius: '8px',
     padding: '0.5rem 0.75rem',
     fontWeight: '600',
