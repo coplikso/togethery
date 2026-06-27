@@ -27,7 +27,7 @@ const styles = {
   landingAccent: { color: '#7C6FFF' },
   landingCard: {
     backgroundColor: '#1A1A1F',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '16px',
     padding: '2rem',
     width: '100%',
@@ -38,7 +38,7 @@ const styles = {
   },
   input: {
     backgroundColor: '#0E0E10',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '8px',
     padding: '0.6rem 0.9rem',
     color: '#F0F0F5',
@@ -47,7 +47,7 @@ const styles = {
     width: '100%',
     boxSizing: 'border-box',
   },
-  divider: { borderColor: '#2A2A32', margin: '0.25rem 0' },
+  divider: { borderColor: '#474E93', margin: '0.25rem 0' },
   btnPrimary: {
     backgroundColor: '#7C6FFF',
     color: '#fff',
@@ -62,7 +62,7 @@ const styles = {
   btnSecondary: {
     backgroundColor: 'transparent',
     color: '#F0F0F5',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '8px',
     padding: '0.65rem 1.2rem',
     fontWeight: '500',
@@ -83,7 +83,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0.9rem 1.5rem',
-    borderBottom: '1px solid #2A2A32',
+    borderBottom: '1px solid #474E93',
     flexShrink: 0,
   },
   bodyRow: {
@@ -103,7 +103,7 @@ const styles = {
     width: '300px',
     minWidth: '300px',
     backgroundColor: '#1A1A1F',
-    borderLeft: '1px solid #2A2A32',
+    borderLeft: '1px solid #474E93',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
@@ -115,7 +115,7 @@ const styles = {
   },
   roomPill: {
     backgroundColor: '#1A1A1F',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '999px',
     padding: '0.3rem 0.9rem',
     fontSize: '0.8rem',
@@ -131,7 +131,7 @@ const styles = {
   tabBtn: (active) => ({
     backgroundColor: active ? '#7C6FFF' : 'transparent',
     color: active ? '#fff' : '#6B6B7A',
-    border: `1px solid ${active ? '#7C6FFF' : '#2A2A32'}`,
+    border: `1px solid ${active ? '#7C6FFF' : '#474E93'}`,
     borderRadius: '8px',
     padding: '0.4rem 1rem',
     fontWeight: '500',
@@ -142,7 +142,7 @@ const styles = {
   // YouTube
   videoContainer: {
     backgroundColor: '#1A1A1F',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '12px',
     overflow: 'hidden',
     display: 'flex',
@@ -152,11 +152,11 @@ const styles = {
     display: 'flex',
     gap: '0.5rem',
     padding: '0.75rem',
-    borderBottom: '1px solid #2A2A32',
+    borderBottom: '1px solid #474E93',
   },
   videoInputField: {
     backgroundColor: '#0E0E10',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '8px',
     padding: '0.5rem 0.8rem',
     color: '#F0F0F5',
@@ -184,7 +184,7 @@ const styles = {
   // PDF
   pdfContainer: {
     backgroundColor: '#1A1A1F',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '12px',
     overflow: 'hidden',
     display: 'flex',
@@ -196,12 +196,12 @@ const styles = {
     alignItems: 'center',
     gap: '0.75rem',
     padding: '0.75rem',
-    borderBottom: '1px solid #2A2A32',
+    borderBottom: '1px solid #474E93',
     flexShrink: 0,
   },
   pdfUploadLabel: {
     backgroundColor: '#0E0E10',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '8px',
     padding: '0.4rem 0.8rem',
     fontSize: '0.8rem',
@@ -215,7 +215,7 @@ const styles = {
   },
   navBtn: (disabled) => ({
     backgroundColor: 'transparent',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '6px',
     padding: '0.3rem 0.6rem',
     color: disabled ? '#3A3A45' : '#F0F0F5',
@@ -236,7 +236,7 @@ const styles = {
   // Sidebar
   sidebarSection: {
     padding: '1rem',
-    borderBottom: '1px solid #2A2A32',
+    borderBottom: '1px solid #474E93',
   },
   sidebarLabel: {
     fontSize: '0.7rem',
@@ -292,13 +292,13 @@ const styles = {
   chatInputRow: {
     display: 'flex',
     gap: '0.5rem',
-    padding: '0.75rem',
-    borderTop: '1px solid #2A2A32',
+    padding: '0.05rem',
+    borderTop: '1px solid #474E93',
   },
   chatInput: {
     flex: 1,
     backgroundColor: '#0E0E10',
-    border: '1px solid #2A2A32',
+    border: '1px solid #474E93',
     borderRadius: '8px',
     padding: '0.5rem 0.75rem',
     color: '#F0F0F5',
@@ -329,7 +329,7 @@ function App() {
   const [roomCode, setRoomCode] = useState(null);
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
-  const [videoId, setVideoId] = useState('dQw4w9WgXcQ');
+  const [videoId, setVideoId] = useState('');
   const [videoUrlInput, setVideoUrlInput] = useState('');
   const playerRef = useRef(null);
   const playerInstance = useRef(null);
@@ -615,17 +615,17 @@ function App() {
             <div style={styles.pdfContainer}>
               <div style={styles.pdfToolbar}>
                 <label style={styles.pdfUploadLabel}>
-                  Upload PDF
+                  + Upload PDF
                   <input type="file" accept=".pdf" onChange={handlePdfUpload} style={{ display: 'none' }} />
                 </label>
                 {pdfData && (
-                  <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: 'auto' }}>
                     <button style={styles.navBtn(currentPage <= 1)} onClick={() => goToPage(currentPage - 1)} disabled={currentPage <= 1}>←</button>
                     <span style={styles.pageInfo}>{currentPage} / {totalPages}</span>
                     <button style={styles.navBtn(currentPage >= totalPages)} onClick={() => goToPage(currentPage + 1)} disabled={currentPage >= totalPages}>→</button>
-                  </>
+                  </div>
                 )}
-              </div>
+            </div>
               <div style={styles.canvasWrapper}>
                 {pdfData
                   ? <canvas ref={canvasRef} style={{ display: 'block' }}></canvas>
